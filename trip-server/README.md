@@ -19,6 +19,15 @@ module.exports = {
 
 #### Запуск.
 
+mac
+
+запуск сервиса
+brew services start mongodb-community@4.0
+
+---
+
+Винда
+
 Нужна версия робомонги 1.3 бета
 
 Из командной строки винды
