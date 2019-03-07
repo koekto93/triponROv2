@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const db = require('./config/db');
+const chat = require('./app/socket/chat.js');
 const app = express();
 const port = 8000;
 
