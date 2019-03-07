@@ -20,6 +20,14 @@ module.exports = {
 #### Запуск.
 
 http-server запустить с помощью шортката http-server.cmd из папки в области видимости папки ./public
+mac
+
+запуск сервиса
+brew services start mongodb-community@4.0
+
+---
+
+Винда
 
 Нужна версия робомонги 1.3 бета
 
