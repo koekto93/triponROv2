@@ -38,4 +38,4 @@ brew services start mongodb-community@4.0
 "C:\Program Files\MongoDB\Server\4.1\bin\mongo.exe"
 ```
 
-запустить сервер из проекта
+запустить сервер из проекта /trip-server yarn start
