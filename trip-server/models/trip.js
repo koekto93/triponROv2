@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require('../libs/mongoose');
 const moment = require('moment');
 const Schema = mongoose.Schema;
 
-var TripSchema = new Schema({
+var tripSchema = new Schema({
   from: String,
   to: String,
   date: { type: Date, default: moment() },
@@ -10,6 +10,4 @@ var TripSchema = new Schema({
   coast: { type: Number, default: 100 },
 });
 
-const Trip = mongoose.model('Trip', TripSchema);
-
-module.exports = Trip;
+module.exports = mongoose.model('Trip', tripSchema);

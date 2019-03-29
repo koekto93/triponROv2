@@ -1,5 +1,5 @@
 var ObjectID = require('mongodb').ObjectID; //MongoDB требуется ID не в виде строки, а в виде специального объекта
-const Trip = require('../../models/trip');
+const Trip = require('../../models/Trip');
 
 module.exports = function(app, db) {
   app.get('/trips', (req, res) => {
@@ -46,7 +46,6 @@ module.exports = function(app, db) {
   //запрос на модификацию поездки
   app.put('/trips/:id', (req, res) => {
     const id = req.params.id;
-    const details = { _id: id };
     const trip = { body: req.body.body, title: req.body.title }; //если данных не будет, то они все равно перезатрут старые данные
     Trip.findByIdAndUpdate(id, trip)
       .then(result => res.send(trip))

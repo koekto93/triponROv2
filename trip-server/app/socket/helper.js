@@ -1,6 +1,6 @@
 const moment = require('moment');
 
-const Trip = require('../../models/trip');
+const Trip = require('../../models/Trip');
 
 const getTrip = async message => {
   let answer =
@@ -44,7 +44,7 @@ const getTripByInterval = ([startDate, startMonth, endDate, endMonth]) => {
   });
 };
 
-const getTripByLocation = (mess) => {};
+const getTripByLocation = mess => {};
 
 exports.getTrip = getTrip;
 exports.getTripByDate = getTripByDate;
