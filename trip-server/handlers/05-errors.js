@@ -1,22 +1,24 @@
 const logger = require('../libs/logger');
 
-exports.init = app => app.use(async (ctx, next) => {
-  try {
-    await next();
-  } catch (e) {
-    if (e.status) {
-      ctx.flash('error', e.message);
-      ctx.redirect('/');
-    } else if (e.name === 'ValidationError') {
-      for (let field in e.errors) {
-        ctx.flash('error', `${field}: ${e.errors[field].message}`);
+exports.init = app =>
+  app.use(async (ctx, next) => {
+    try {
+      await next();
+    } catch (e) {
+      if (e.status) {
+        console.log('error', e);
+        ctx.flash('error', e.message);
+        //ctx.redirect('/');
+      } else if (e.name === 'ValidationError') {
+        for (let field in e.errors) {
+          ctx.flash('error', `${field}: ${e.errors[field].message}`);
+        }
+        //ctx.redirect('/');
+      } else {
+        console.log('error', e);
+        ctx.flash('error', 'Internal server error');
+        //ctx.redirect('/');
+        logger.error(e.message, { requestId: ctx.requestId });
       }
-      ctx.redirect('/');
-    } else {
-      ctx.flash('error', 'Internal server error');
-      ctx.redirect('/');
-      logger.error(e.message, {requestId: ctx.requestId});
     }
-
-  }
-});
+  });
