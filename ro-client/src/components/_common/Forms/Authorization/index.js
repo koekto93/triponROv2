@@ -8,6 +8,8 @@ import { InputForm } from '../Elements'
 import { Button } from '../../index'
 import { FormContent, Label } from './styled'
 
+import { loginUser } from '../../../../api/auth'
+
 /* type CallBackProps = {
   candidateInfo: Object,
   status: string,
@@ -16,6 +18,7 @@ import { FormContent, Label } from './styled'
 
 const Authorization = () => {
   const onSubmit = values => {
+    loginUser(values)
     /* setCandidateStatus({
       CandidateId: id,
       Status: status,
