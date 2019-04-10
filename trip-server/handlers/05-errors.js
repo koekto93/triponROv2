@@ -4,21 +4,21 @@ exports.init = app =>
   app.use(async (ctx, next) => {
     try {
       await next();
-    } catch (e) {
-      if (e.status) {
-        console.log('error', e);
-        ctx.flash('error', e.message);
-        //ctx.redirect('/');
-      } else if (e.name === 'ValidationError') {
-        for (let field in e.errors) {
-          ctx.flash('error', `${field}: ${e.errors[field].message}`);
+    } catch (err) {
+      if (err.status) {
+        console.log('error', err);
+        //ctx.flash('error', e.message);
+        ctx.status = err.status || 500;
+        ctx.body = { message: err.message };
+      } else if (err.name === 'ValidationError') {
+        console.log('Ошибка валидации', err.errors);
+        for (let field in err.errors) {
+          ctx.flash('error', `${field}: ${err.errors[field].message}`);
         }
-        //ctx.redirect('/');
       } else {
-        console.log('error', e);
-        ctx.flash('error', 'Internal server error');
-        //ctx.redirect('/');
-        logger.error(e.message, { requestId: ctx.requestId });
+        ctx.status = 500;
+        ctx.body = { message: err.message };
+        logger.error(err.message, { requestId: ctx.requestId });
       }
     }
   });

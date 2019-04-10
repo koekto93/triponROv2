@@ -9,11 +9,6 @@ const router = new Router();
 const loadById = require('./helper/loadById');
 const options = {
   origin: '*',
-  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
-  maxAge: 5,
-  credentials: true,
-  allowMethods: ['GET', 'POST', 'DELETE'],
-  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
 };
 
 app.use(cors(options));
@@ -37,8 +32,10 @@ router
   .put('/trip/:tripId', loadById, require('./routes/trip').put)
   .del('/trip/:tripId', loadById, require('./routes/trip').delete);
 
-router.post('/auth/login', require('./routes/login').post);
-//.post('/logout', require('./routes/logout').post);
+router.post('/login', require('./routes/login').post);
+router.post('/logout', require('./routes/logout').post);
+router.post('/register', require('./routes/register').post);
+router.get('/confirm/:verifyEmailToken', require('./routes/confirm').get);
 
 app.use(router.routes());
 

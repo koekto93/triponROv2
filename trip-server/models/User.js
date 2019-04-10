@@ -60,7 +60,11 @@ function generatePassword(salt, password) {
 userSchema.methods.setPassword = async function setPassword(password) {
   if (password !== undefined) {
     if (password.length < 4) {
-      throw new Error('Пароль должен быть минимум 4 символа.');
+      let err = new Error('Пароль должен быть минимум 4 символа.');
+      err.status = 400;
+      err.message = `Пароль должен быть минимум 4 символа.`;
+      throw err;
+      //throw new Error('Пароль должен быть минимум 4 символа.');
     }
   }
 

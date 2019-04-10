@@ -10,6 +10,7 @@ export { default as Button } from './Button'
 export { default as FormHead } from './Forms/Elements/FormHead'
 export { default as RadioButtonGroup } from './Forms/Elements/RadioButtonGroup'
 export { default as Authorization } from './Forms/Authorization'
+export { default as Registration } from './Forms/Registration'
 
 export { default as Loader } from './Loader'
 

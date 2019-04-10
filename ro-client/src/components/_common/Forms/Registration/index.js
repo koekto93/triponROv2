@@ -8,7 +8,7 @@ import { InputForm } from '../Elements'
 import { Button } from '../../index'
 import { FormContent, Label } from './styled'
 
-import { loginUser } from '../../../../api/auth'
+import { registerUser } from '../../../../api/auth'
 
 /* type CallBackProps = {
   candidateInfo: Object,
@@ -16,9 +16,9 @@ import { loginUser } from '../../../../api/auth'
   setCandidateStatus: setCandidateStatus,
 } */
 
-const Authorization = () => {
+const Registration = () => {
   const onSubmit = values => {
-    loginUser(values)
+    registerUser(values)
     /* setCandidateStatus({
       CandidateId: id,
       Status: status,
@@ -34,8 +34,16 @@ const Authorization = () => {
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
           <FormContent>
+            <div key="displayName">
+              <Label>Имя</Label>
+              <Field
+                name="displayName"
+                component={InputForm}
+                validate={required}
+              />
+            </div>
             <div key="email">
-              <Label>Логин</Label>
+              <Label>Email</Label>
               <Field name="email" component={InputForm} validate={required} />
             </div>
 
@@ -68,4 +76,4 @@ const Authorization = () => {
   { setCandidateStatus }
 )(CommentModal) */
 
-export default Authorization
+export default Registration

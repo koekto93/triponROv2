@@ -20,12 +20,6 @@ exports.put = async function(ctx) {
   await ctx.tripById.save();
 
   ctx.body = ctx.tripById.toObject();
-
-  /* const id = ctx.params.id;
-  const trip = await Trip.findById(id);
-  ctx.body = await trip.updateOne({}); */
-  //const trip = { body: req.body.body, title: req.body.title }; //если данных не будет, то они все равно перезатрут старые данные
-  //ctx.body = await Trip.findByIdAndUpdate(id, trip);
 };
 
 exports.delete = async function(ctx) {

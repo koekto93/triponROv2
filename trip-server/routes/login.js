@@ -1,8 +1,10 @@
 const passport = require('../libs/passport');
 
 exports.post = async (ctx, next) => {
+  console.log('login');
   await passport.authenticate('local', async function(err, user, info) {
     if (err) throw err;
+    console.log('login', user, info);
 
     if (user) {
       await ctx.login(user);
@@ -13,10 +15,3 @@ exports.post = async (ctx, next) => {
     }
   })(ctx, next);
 };
-
-/* exports.post = passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/',
-  failureFlash: true,
-  successFlash: true
-}); */

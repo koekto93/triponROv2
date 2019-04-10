@@ -20,9 +20,9 @@ module.exports = new LocalStrategy(
         return done(null, false, { message: 'Пароль неверен.' });
       }
 
-      /* if (!user.verifiedEmail) {
+      if (!user.verifiedEmail) {
         return done(null, false, { message: 'Email не подтвержден.' });
-      } */
+      }
 
       return done(null, user, { message: 'Добро пожаловать!' });
     } catch (err) {
