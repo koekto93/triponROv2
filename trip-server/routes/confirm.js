@@ -1,6 +1,7 @@
 const User = require('../models/User');
 
 exports.get = async function(ctx) {
+  console.log(ctx.params.verifyEmailToken);
   const user = await User.findOne({
     verifyEmailToken: ctx.params.verifyEmailToken,
   });
@@ -18,6 +19,4 @@ exports.get = async function(ctx) {
   await user.save();
 
   await ctx.login(user);
-
-  ctx.redirect('/');
 };

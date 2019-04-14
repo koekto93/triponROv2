@@ -1,4 +1,5 @@
 import axios from 'axios'
+axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*'
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
 
 const LOGIN_USER_URL = 'http://localhost:3001/login'
@@ -14,7 +15,7 @@ export const registerUser = data =>
   axios
     .post(REGISTER_USER_URL, data)
     .then(({ data }) => data)
-    .catch(({ response }) => {
-      //console.log(response)
+    .catch(({ res }) => {
+      //console.log(res)
       //console.log(response.data.message)
     })

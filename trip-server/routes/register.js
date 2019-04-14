@@ -25,15 +25,13 @@ exports.post = async function(ctx) {
   } catch (err) {
     if (err.name === 'ValidationError') {
       console.log('valid error in register', err.errors);
-      let errorMessages = '';
+      let errorMessages = {};
       for (let key in err.errors) {
-        errorMessages += `${key}: ${err.errors[key].message}<br>`;
+        errorMessages[key] = err.errors[key].message;
       }
-      //ctx.flash('error', errorMessages);
-      console.log('catch', errorMessages);
-      ctx.status = err.status || 500;
-      ctx.body = { message: errorMessages };
-      return ctx.redirect('/register');
+      ctx.status = 400;
+      ctx.body = errorMessages;
+      return;
     } else {
       console.log(err);
       throw err;
