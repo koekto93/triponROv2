@@ -5,8 +5,9 @@ import { withRouter } from 'react-router-dom'
 
 import MainPage from './MainPage'
 import SecondPage from './SecondPage'
-import Login from './Login'
+import LoginPage from './LoginPage'
 import Registration from './Registration'
+import { PrivateRoute } from '../layouts/PrivateRoute'
 
 import { Container } from './styled'
 
@@ -15,11 +16,11 @@ class Pages extends Component {
     return (
       <Container>
         <Switch>
-          <Redirect from="/" exact to="/login" />
-          <Route path="/mainPage" component={MainPage} />
-          <Route path="/secondPage" component={SecondPage} />
-          <Route path="/login" component={Login} />
+          <Redirect from="/" exact to="/mainPage" />
+          <Route path="/login" component={LoginPage} />
           <Route path="/register" component={Registration} />
+          <PrivateRoute path="/mainPage" component={MainPage} />
+          <PrivateRoute path="/secondPage" component={SecondPage} />
         </Switch>
       </Container>
     )

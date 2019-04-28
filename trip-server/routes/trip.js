@@ -3,6 +3,7 @@ const pick = require('lodash/pick');
 
 exports.get = async function(ctx) {
   const trips = await Trip.find({});
+  console.log('in get', trips.map(trip => trip.toObject()));
   ctx.body = trips.map(trip => trip.toObject());
 };
 

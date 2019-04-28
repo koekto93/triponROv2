@@ -7,6 +7,7 @@ const config = require('config');
 const app = new Koa();
 const router = new Router();
 const loadById = require('./helper/loadById');
+const authByToken = require('./helper/authByToken');
 const options = {
   origin: '*',
 };
@@ -24,13 +25,19 @@ require('./handlers/07-bodyParser').init(app);
 require('./handlers/08-passport').init(app);
 require('./handlers/09-flash').init(app);
 //require('./handlers/10-csrf').init(app);
+//require('./handlers/11-auth').init(app);
 
 router
-  .get('/trip', require('./routes/trip').get)
-  .post('/trip', require('./routes/trip').post)
-  .get('/trip/:tripId', loadById, require('./routes/trip').getСertainEntity)
-  .put('/trip/:tripId', loadById, require('./routes/trip').put)
-  .del('/trip/:tripId', loadById, require('./routes/trip').delete);
+  .get('/trip', authByToken, require('./routes/trip').get)
+  .post('/trip', authByToken, require('./routes/trip').post)
+  .get(
+    '/trip/:tripId',
+    authByToken,
+    loadById,
+    require('./routes/trip').getСertainEntity,
+  )
+  .put('/trip/:tripId', authByToken, loadById, require('./routes/trip').put)
+  .del('/trip/:tripId', authByToken, loadById, require('./routes/trip').delete);
 
 router.post('/login', require('./routes/login').post);
 router.post('/logout', require('./routes/logout').post);

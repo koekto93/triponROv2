@@ -8,7 +8,7 @@ import { InputForm } from '../Elements'
 import { Button } from '../../index'
 import { FormContent, Label } from './styled'
 
-import { loginUser } from '../../../../api/auth'
+//import { loginUser } from '../../../../api/auth'
 
 /* type CallBackProps = {
   candidateInfo: Object,
@@ -16,9 +16,10 @@ import { loginUser } from '../../../../api/auth'
   setCandidateStatus: setCandidateStatus,
 } */
 
-const Authorization = () => {
+const Authorization = ({ handleSubmit }) => {
   const onSubmit = values => {
-    loginUser(values)
+    //loginUser(values)
+    handleSubmit(values)
     /* setCandidateStatus({
       CandidateId: id,
       Status: status,
