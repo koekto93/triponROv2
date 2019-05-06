@@ -42,6 +42,12 @@ brew services start mongodb-community@4.0
 
 Из командной строки винды
 
+Если редис установлен криво, то
+
+```js
+"C:\Program Files\Redis\redis-server.exe"
+```
+
 ```js
 "C:\Program Files\MongoDB\Server\4.1\bin\mongod.exe" --dbpath="c:\data\db"
 "C:\Program Files\MongoDB\Server\4.1\bin\mongo.exe"
