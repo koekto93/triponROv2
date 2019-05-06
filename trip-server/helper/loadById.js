@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Trip = require('../models/Trip');
+const mongoose = require("mongoose");
+const Trip = require("../models/Trip");
 
 //мидла на проверку ObjectId
 async function loadById(ctx, next) {
@@ -12,7 +12,7 @@ async function loadById(ctx, next) {
   ctx.tripById = await Trip.findById(id);
 
   if (!ctx.tripById) {
-    ctx.throw(404, 'trip with this id not found');
+    ctx.throw(404, "trip with this id not found");
   }
 
   await next();

@@ -1,9 +1,8 @@
-const Trip = require('../models/Trip');
-const pick = require('lodash/pick');
+const Trip = require("../models/Trip");
+const pick = require("lodash/pick");
 
 exports.get = async function(ctx) {
   const trips = await Trip.find({});
-  console.log('in get', trips.map(trip => trip.toObject()));
   ctx.body = trips.map(trip => trip.toObject());
 };
 
@@ -25,5 +24,5 @@ exports.put = async function(ctx) {
 
 exports.delete = async function(ctx) {
   await ctx.tripById.remove();
-  ctx.body = 'ok';
+  ctx.body = "ok";
 };
