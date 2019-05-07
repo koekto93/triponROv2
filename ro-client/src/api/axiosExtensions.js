@@ -1,9 +1,12 @@
 ﻿import axios from 'axios'
+//import jwt_decode from 'jwt-decode'
+
 import history from '../history'
 
 export const setAuthToken = token => {
   if (token) {
     axios.defaults.headers.common['Authorization'] = token
+    //console.log(jwt_decode(token)) отсюда можно отправить полученную инфу из токена в стор
   } else {
     delete axios.defaults.headers.common['Authorization']
   }
