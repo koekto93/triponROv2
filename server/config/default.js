@@ -17,7 +17,7 @@ module.exports = {
   },
   mongodb: {
     debug: true,
-    uri: process.env.MONGODB_URI || 'mongodb://localhost/passport_socketio',
+    uri: process.env.MONGODB_URI || 'mongodb://localhost/mo_trip',
   },
   redis: {
     uri: process.env.REDIS_URL || 'redis://127.0.0.1:6379',
